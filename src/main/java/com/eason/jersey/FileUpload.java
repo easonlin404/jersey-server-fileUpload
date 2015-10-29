@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -33,7 +35,8 @@ public class FileUpload {
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String upload(
+	public  Map<String, Object> upload(
+			@FormDataParam("declNo") String declNo,
 			@FormDataParam("file") InputStream uploadedInputStream,
 			@FormDataParam("file") FormDataContentDisposition fileDetail) throws Exception {
 		try {
@@ -49,8 +52,9 @@ public class FileUpload {
 			writeToFile(uploadedInputStream, temp);
 
 			// TODO: do something
-
-			return "success";
+			 Map<String, Object> map = new HashMap<String, Object>();
+			 map.put("msg", "success");
+			return map;
 
 		} catch (Exception e) {
 			e.printStackTrace();
