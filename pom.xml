@@ -40,7 +40,7 @@
 						</scanTargetPattern>
 					</scanTargetPatterns>
 					<webApp>
-						<contextPath>/jersey-server-jackson</contextPath>
+						<contextPath>/jersey-server-fileUpload</contextPath>
 						<descriptor>src/main/webapp/WEB-INF/jetty-env-web.xml</descriptor>
 					</webApp>
 				</configuration>
@@ -49,7 +49,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<warName>APMO</warName>
+					<warName>jersey-server-fileUpload</warName>
 					<packagingExcludes>WEB-INF/jetty-env-web.xml</packagingExcludes>
 					<webXml>src/main/webapp/WEB-INF/jetty-env-web.xml</webXml>
 					<webResources>
@@ -68,11 +68,6 @@
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
 			<artifactId>jersey-container-servlet</artifactId>
-			<version>${jersey.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
 		<dependency>
