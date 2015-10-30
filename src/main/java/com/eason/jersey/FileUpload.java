@@ -5,13 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -34,9 +31,7 @@ public class FileUpload {
 	 */
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	@Produces(MediaType.APPLICATION_JSON)
-	public  Map<String, Object> upload(
-			@FormDataParam("declNo") String declNo,
+	public  String upload(
 			@FormDataParam("file") InputStream uploadedInputStream,
 			@FormDataParam("file") FormDataContentDisposition fileDetail) throws Exception {
 		try {
@@ -51,10 +46,7 @@ public class FileUpload {
 			System.out.println(temp.getAbsolutePath());
 			writeToFile(uploadedInputStream, temp);
 
-			// TODO: do something
-			 Map<String, Object> map = new HashMap<String, Object>();
-			 map.put("msg", "success");
-			return map;
+			return "success";
 
 		} catch (Exception e) {
 			e.printStackTrace();
